@@ -111,7 +111,7 @@ public class Concesionario implements Serializable{
 	 * 
 	 * @return Número de coches en el almacén del concesionario
 	 */
-	int size() {
+	public int size() {
 		return almacen.size();
 	}
 
@@ -159,6 +159,19 @@ public class Concesionario implements Serializable{
 				arrCochesColor.add(coche);
 		}
 		return arrCochesColor;
+	}
+	
+	/**
+	 * Devuelve el coche correspondiente al indice indicado
+	 * @param indice
+	 * @return coche
+	 */
+	public Coche get(int indice) {
+		if(almacen.isEmpty())
+			return null;
+		if(indice < 0 | indice > almacen.size()-1)
+			return null;
+		return almacen.get(indice);
 	}
 
 }

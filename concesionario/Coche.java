@@ -43,6 +43,7 @@ public class Coche implements Serializable{
 	 * Matrícula del coche
 	 */
 	private String matricula;
+
 	/**
 	 * Color del coche
 	 */
@@ -150,6 +151,13 @@ public class Coche implements Serializable{
 			this.matricula = estandarizarMatricula(matricula);
 		else
 			throw new MatriculaNoValidaException("La matrícula no es válida. ");
+	}
+	
+	/**
+	 * @return the matricula
+	 */
+	public String getMatricula() {
+		return matricula;
 	}
 
 	/**

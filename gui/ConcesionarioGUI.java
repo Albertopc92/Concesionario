@@ -27,6 +27,7 @@ public class ConcesionarioGUI {
 	private BuscarMatricula buscarMatricula;
 	private BuscarColor buscarColor;
 	private Ayuda ayuda;
+	private MostrarConcesionario mostrarConcesionario;
 	protected static Concesionario concesionario = new Concesionario();
 	private Filtro filtro = new Filtro(".obj", "Objeto");
 
@@ -166,6 +167,12 @@ public class ConcesionarioGUI {
 		mnCoche.add(mntmBaja);
 
 		JMenuItem mntmMostrarConcesionario = new JMenuItem("Mostrar Concesionario");
+		mntmMostrarConcesionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				mostrarConcesionario = new MostrarConcesionario();
+				mostrarConcesionario.setVisible(true);
+			}
+		});
 		mnCoche.add(mntmMostrarConcesionario);
 
 		JMenu mnBuscar = new JMenu("Buscar");
