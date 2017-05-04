@@ -24,7 +24,8 @@ public class ConcesionarioGUI {
 	private About about;
 	private Alta alta;
 	private Baja baja;
-	private Buscar buscar;
+	private BuscarMatricula buscarMatricula;
+	private BuscarColor buscarColor;
 	private Ayuda ayuda;
 	protected static Concesionario concesionario = new Concesionario();
 	private Filtro filtro = new Filtro(".obj", "Objeto");
@@ -174,13 +175,20 @@ public class ConcesionarioGUI {
 		JMenuItem mntmPorMatricula = new JMenuItem("Por matricula");
 		mntmPorMatricula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buscar = new Buscar();
-				buscar.setVisible(true);
+				buscarMatricula = new BuscarMatricula();
+				buscarMatricula.setVisible(true);
 			}
 		});
 		mnBuscar.add(mntmPorMatricula);
 
 		JMenuItem mntmPorColor = new JMenuItem("Por color");
+		mntmPorColor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO
+				buscarColor = new BuscarColor();
+				buscarColor.setVisible(true);
+			}
+		});
 		mnBuscar.add(mntmPorColor);
 
 		JMenu mnAyuda = new JMenu("Ayuda");
