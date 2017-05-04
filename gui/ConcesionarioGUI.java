@@ -184,7 +184,6 @@ public class ConcesionarioGUI {
 		JMenuItem mntmPorColor = new JMenuItem("Por color");
 		mntmPorColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
 				buscarColor = new BuscarColor();
 				buscarColor.setVisible(true);
 			}
@@ -311,6 +310,7 @@ public class ConcesionarioGUI {
 	}
 	
 	/**
+	 * 
 	 * Metodo que permite guardar un fichero con la accion guardar como...
 	 */
 	private void guardarComo() {
