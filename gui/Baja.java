@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import concesionario.Coche;
-import concesionario.Concesionario;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -18,8 +17,7 @@ public class Baja extends Plantilla {
 	/**
 	 * Create the dialog.
 	 */
-	public Baja(Concesionario concesionario) {
-		super(concesionario);
+	public Baja() {
 		btnAccion.setText("Borrar");
 		comboBox_Modelo.setEnabled(false);
 		comboBox_Marca.setEnabled(false);

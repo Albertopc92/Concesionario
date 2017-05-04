@@ -34,6 +34,7 @@ public class Plantilla extends JDialog {
 	protected JButton btnAtras;
 	protected JButton btnAdelante;
 	protected JButton btnAccion;
+	protected Concesionario concesionario = ConcesionarioGUI.concesionario;
 
 
 	private Object[] getModelo(JComboBox comboBox_Marca) {
@@ -60,7 +61,7 @@ public class Plantilla extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public Plantilla(Concesionario concesionario) {
+	public Plantilla() {
 		setTitle("Alta");
 		setModal(true);
 		setBounds(100, 100, 423, 275);

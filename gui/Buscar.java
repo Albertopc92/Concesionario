@@ -5,9 +5,7 @@ import java.awt.FlowLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import concesionario.Coche;
-import concesionario.Concesionario;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -19,8 +17,7 @@ public class Buscar extends Plantilla {
 	/**
 	 * Create the dialog.
 	 */
-	public Buscar(Concesionario concesionario) {
-		super(concesionario);
+	public Buscar() {
 		btnAccion.setText("Buscar");
 		setTitle("Buscar por matr\u00EDcula");
 		comboBox_Modelo.setEnabled(false);
@@ -47,8 +44,6 @@ public class Buscar extends Plantilla {
 					JOptionPane.showMessageDialog(getContentPane(),"No existe ningún coche con esa matricula.", "Error",JOptionPane.ERROR_MESSAGE);
 				}
 			}
-
-			
 
 		});
 		

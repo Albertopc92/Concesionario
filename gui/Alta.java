@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import concesionario.Concesionario;
+
 import concesionario.Modelo;
 
 import java.awt.event.ActionListener;
@@ -21,8 +21,7 @@ public class Alta extends Plantilla {
 	/**
 	 * Create the dialog.
 	 */
-	public Alta(Concesionario concesionario) {
-		super(concesionario);
+	public Alta() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

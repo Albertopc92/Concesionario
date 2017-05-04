@@ -29,7 +29,7 @@ public class ConcesionarioGUI {
 	private Baja baja;
 	private Buscar buscar;
 	private Ayuda ayuda;
-	private Concesionario concesionario = new Concesionario();
+	protected static Concesionario concesionario = new Concesionario();
 	private Filtro filtro = new Filtro(".obj", "Objeto");
 
 	/**
@@ -126,9 +126,19 @@ public class ConcesionarioGUI {
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO
-				if(concesionario.isModificado())
-				System.exit(0);
+				if(concesionario.isModificado()){
+					Object[] options = { "SI", "NO", "CANCELAR" };
+					int respuesta = JOptionPane.showOptionDialog(null, "No has guardado, ¿Desea Guardar?", "NO HAS GUARDADO",
+							JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+					if(respuesta == 0){
+						guardarComo();
+					}else if(respuesta == 1){
+						System.exit(0);
+					}
+				}else{
+					System.exit(0);
+				}
+					
 			}
 		});
 		mnNewMenu.add(mntmSalir);
@@ -140,7 +150,7 @@ public class ConcesionarioGUI {
 		JMenuItem mntmAlta = new JMenuItem("Alta");
 		mntmAlta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				alta = new Alta(concesionario);
+				alta = new Alta();
 				alta.setVisible(true);
 			}
 		});
@@ -150,7 +160,7 @@ public class ConcesionarioGUI {
 		JMenuItem mntmBaja = new JMenuItem("Baja");
 		mntmBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				baja = new Baja(concesionario);
+				baja = new Baja();
 				baja.setVisible(true);
 			}
 		});
@@ -167,7 +177,7 @@ public class ConcesionarioGUI {
 		JMenuItem mntmPorMatricula = new JMenuItem("Por matricula");
 		mntmPorMatricula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buscar = new Buscar(concesionario);
+				buscar = new Buscar();
 				buscar.setVisible(true);
 			}
 		});
@@ -324,6 +334,8 @@ public class ConcesionarioGUI {
 							JOptionPane.ERROR_MESSAGE);
 				}
 
+			}else{
+				guardar();
 			}
 
 			frmConcesionario.setTitle(Fichero.getFichero().getName());
