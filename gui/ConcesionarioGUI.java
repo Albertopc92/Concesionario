@@ -28,7 +28,7 @@ public class ConcesionarioGUI {
 	private Baja baja;
 	private BuscarMatricula buscarMatricula;
 	private BuscarColor buscarColor;
-	//private Ayuda ayuda;
+	public static final Ayuda ayuda = new Ayuda();
 	private MostrarConcesionario mostrarConcesionario;
 	protected static Concesionario concesionario = new Concesionario();
 	private Filtro filtro = new Filtro(".obj", "Objeto");
@@ -211,8 +211,7 @@ public class ConcesionarioGUI {
 		JMenuItem mntmVerLaAyuda = new JMenuItem("Ver la ayuda");
 		mntmVerLaAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Ayuda ayuda = new Ayuda();
-				ayuda.setVisible(true);
+				ayuda.setVisible(true);	
 			}
 		});
 		mnAyuda.add(mntmVerLaAyuda);
@@ -229,12 +228,14 @@ public class ConcesionarioGUI {
 					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
 			if (respuesta == 0) {
 				guardarComo();
-				Fichero.setFichero("SinTitulo");
+				String titulo = JOptionPane.showInputDialog(null, "Introduce el nombre del nuevo concesionario", "Nombre del Concesionario", JOptionPane.QUESTION_MESSAGE);
+				Fichero.setFichero(titulo);
 				concesionario = new Concesionario();
 				frmConcesionario.setTitle(Fichero.fichero.getName());
 				concesionario.setModificado(false);
 			} else if (respuesta == 1) {
-				Fichero.setFichero("SinTitulo");
+				String titulo = JOptionPane.showInputDialog(null, "Introduce el nombre del nuevo concesionario", "Nombre del Concesionario", JOptionPane.QUESTION_MESSAGE);
+				Fichero.setFichero(titulo);
 				concesionario = new Concesionario();
 				frmConcesionario.setTitle(Fichero.fichero.getName());
 				concesionario.setModificado(false);
