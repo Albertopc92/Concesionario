@@ -30,8 +30,8 @@ public class Baja extends Plantilla {
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		btnAdelante.setEnabled(false);
-		btnAtras.setEnabled(false);
+		btnAdelante.setVisible(false);
+		btnAtras.setVisible(false);
 
 		btnAccion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

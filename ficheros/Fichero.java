@@ -48,9 +48,10 @@ public class Fichero implements Serializable {
 	 */
 	public static void guardarComo(Object objeto, File nombre) throws IOException {
 		fichero = comprobarFichero(nombre);
-		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fichero))) {
-			out.writeObject(objeto);
-		}
+		guardar(objeto);
+//		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fichero))) {
+//			out.writeObject(objeto);
+//		}
 	}
 
 	/**

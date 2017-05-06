@@ -25,8 +25,8 @@ public class BuscarMatricula extends Plantilla {
 		rdbtn_Rojo.setEnabled(false);
 		rdbtn_Plata.setEnabled(false);
 		comboBox_Marca.setEnabled(false);
-		btnAdelante.setEnabled(false);
-		btnAtras.setEnabled(false);
+		btnAdelante.setVisible(false);
+		btnAtras.setVisible(false);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

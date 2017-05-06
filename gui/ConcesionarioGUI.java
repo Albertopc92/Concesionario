@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.awt.event.InputEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class ConcesionarioGUI {
 
@@ -26,7 +28,7 @@ public class ConcesionarioGUI {
 	private Baja baja;
 	private BuscarMatricula buscarMatricula;
 	private BuscarColor buscarColor;
-	private Ayuda ayuda;
+	//private Ayuda ayuda;
 	private MostrarConcesionario mostrarConcesionario;
 	protected static Concesionario concesionario = new Concesionario();
 	private Filtro filtro = new Filtro(".obj", "Objeto");
@@ -60,6 +62,12 @@ public class ConcesionarioGUI {
 	 */
 	private void initialize() {
 		frmConcesionario = new JFrame();
+		frmConcesionario.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				salir();
+			}
+		});
 		frmConcesionario.setResizable(true);
 		frmConcesionario.setTitle("Concesionario - " + Fichero.fichero.getName());
 		frmConcesionario.setBounds(100, 100, 650, 428);
@@ -125,20 +133,11 @@ public class ConcesionarioGUI {
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(concesionario.isModificado()){
-					Object[] options = { "SI", "NO", "CANCELAR" };
-					int respuesta = JOptionPane.showOptionDialog(null, "No has guardado, ¿Desea Guardar?", "NO HAS GUARDADO",
-							JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-					if(respuesta == 0){
-						guardarComo();
-					}else if(respuesta == 1){
-						System.exit(0);
-					}
-				}else{
-					System.exit(0);
-				}
+				salir();
 					
 			}
+
+			
 		});
 		mnNewMenu.add(mntmSalir);
 
@@ -242,7 +241,8 @@ public class ConcesionarioGUI {
 			} else {
 			}
 		} else {
-			Fichero.setFichero("SinTitulo");
+			String titulo = JOptionPane.showInputDialog(null, "Introduce el nombre del nuevo concesionario", "Nombre del Concesionario", JOptionPane.QUESTION_MESSAGE);
+			Fichero.setFichero(titulo);
 			concesionario = new Concesionario();
 			frmConcesionario.setTitle(Fichero.fichero.getName());
 			concesionario.setModificado(false);
@@ -303,7 +303,7 @@ public class ConcesionarioGUI {
 	 * Metodo que permite guardar un fichero
 	 */
 	private void guardar() {
-		if (Fichero.fichero.getName().equalsIgnoreCase("SinTitulo")) {
+		if (Fichero.fichero.getName().equalsIgnoreCase("Sin Titulo")) {
 			guardarComo();
 			concesionario.setModificado(false);
 		} else {
@@ -352,6 +352,20 @@ public class ConcesionarioGUI {
 
 			frmConcesionario.setTitle(Fichero.getFichero().getName());
 			concesionario.setModificado(false);
+		}
+	}
+	private void salir() {
+		if(concesionario.isModificado()){
+			Object[] options = { "SI", "NO", "CANCELAR" };
+			int respuesta = JOptionPane.showOptionDialog(null, "No has guardado, ¿Desea Guardar?", "NO HAS GUARDADO",
+					JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+			if(respuesta == 0){
+				guardarComo();
+			}else if(respuesta == 1){
+				System.exit(0);
+			}
+		}else{
+			System.exit(0);
 		}
 	}
 }

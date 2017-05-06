@@ -1,10 +1,8 @@
 package gui;
 
-
 import concesionario.Concesionario;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-
 import concesionario.Coche;
 import concesionario.Color;
 import concesionario.Marca;
@@ -35,6 +33,7 @@ public class Plantilla extends JDialog {
 	protected JButton btnAdelante;
 	protected JButton btnAccion;
 	protected Concesionario concesionario = ConcesionarioGUI.concesionario;
+	protected int indiceCoche = -1;
 
 
 	private Object[] getModelo(JComboBox comboBox_Marca) {
@@ -187,4 +186,48 @@ public class Plantilla extends JDialog {
 		comboBox_Modelo.addItem(coche.getModelo());
 		comboBox_Modelo.setSelectedItem(coche.getModelo());
 	}
+	
+	/**
+	 * comprueba el estado de los botones y los habilita/deshabilita cuando es necesario
+	 */
+	protected void comprobarBotones() {
+		if (concesionario.get(indiceCoche  + 1) == null)
+			btnAdelante.setEnabled(false);
+		else
+			btnAdelante.setEnabled(true);
+
+		if (concesionario.get(indiceCoche - 1) == null)
+			btnAtras.setEnabled(false);
+		else
+			btnAtras.setEnabled(true);
+	}
+	
+	/**
+	 * Comprueba si hay coches en el concesionario, muesta el primer coche y comprueba el estado de los botones
+	 */
+	void actualizar() {
+		if (concesionario.size() == 0) {
+			return;
+		}
+		indiceCoche = 0;
+		mostrarCoche(concesionario.get(indiceCoche));
+		comprobarBotones();		
+	}
+	
+	/**
+	 * Muestra el siguiente coche del concesionario
+	 */
+	void mostrarSiguiente() {
+		mostrarCoche(concesionario.get(++indiceCoche));
+		comprobarBotones();
+	}
+	
+	/**
+	 * Muestra el coche anterior del concesionario
+	 */
+	void mostrarAnterior() {
+		mostrarCoche(concesionario.get(--indiceCoche));
+		comprobarBotones();
+	}
+	
 }
