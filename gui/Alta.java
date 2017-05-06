@@ -44,6 +44,7 @@ public class Alta extends Plantilla {
 					textField_Matricula.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(getContentPane(), "El coche no se ha podido añadir." + exception.getMessage(),
 							"Error", JOptionPane.ERROR_MESSAGE);
+					textField_Matricula.setBackground(Color.WHITE);
 				}
 			}
 		});
