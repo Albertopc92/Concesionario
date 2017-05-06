@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JOptionPane;
@@ -40,6 +41,7 @@ public class Alta extends Plantilla {
 					}
 
 				} catch (Exception exception) {
+					textField_Matricula.setBackground(Color.RED);
 					JOptionPane.showMessageDialog(getContentPane(), "El coche no se ha podido añadir." + exception.getMessage(),
 							"Error", JOptionPane.ERROR_MESSAGE);
 				}
