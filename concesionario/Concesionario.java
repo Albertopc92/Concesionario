@@ -173,5 +173,7 @@ public class Concesionario implements Serializable{
 			return null;
 		return almacen.get(indice);
 	}
+	
+	
 
 }
