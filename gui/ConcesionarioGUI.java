@@ -32,6 +32,7 @@ public class ConcesionarioGUI {
 	private MostrarConcesionario mostrarConcesionario;
 	protected static Concesionario concesionario = new Concesionario();
 	private Filtro filtro = new Filtro(".obj", "Objeto");
+	private String nombreConcesionario;
 
 	/**
 	 * Launch the application.
@@ -242,8 +243,8 @@ public class ConcesionarioGUI {
 			} else {
 			}
 		} else {
-			String titulo = JOptionPane.showInputDialog(null, "Introduce el nombre del nuevo concesionario", "Nombre del Concesionario", JOptionPane.QUESTION_MESSAGE);
-			Fichero.setFichero(titulo);
+			nombreConcesionario = JOptionPane.showInputDialog(null, "Introduce el nombre del nuevo concesionario", "Nombre del Concesionario", JOptionPane.QUESTION_MESSAGE);
+			Fichero.setFichero(nombreConcesionario);
 			concesionario = new Concesionario();
 			frmConcesionario.setTitle(Fichero.fichero.getName());
 			concesionario.setModificado(false);
@@ -304,7 +305,7 @@ public class ConcesionarioGUI {
 	 * Metodo que permite guardar un fichero
 	 */
 	private void guardar() {
-		if (Fichero.fichero.getName().equalsIgnoreCase("Sin Titulo")) {
+		if (Fichero.fichero.getName().equalsIgnoreCase(nombreConcesionario)) {
 			guardarComo();
 			concesionario.setModificado(false);
 		} else {
