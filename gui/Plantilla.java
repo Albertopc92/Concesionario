@@ -35,28 +35,6 @@ public class Plantilla extends JDialog {
 	protected Concesionario concesionario = ConcesionarioGUI.concesionario;
 	protected int indiceCoche = -1;
 
-
-	private Object[] getModelo(JComboBox comboBox_Marca) {
-		Marca marca = (Marca) comboBox_Marca.getSelectedItem();
-		ArrayList<Modelo> modelos = new ArrayList<Modelo>();
-		for (Modelo m : Modelo.values()) {
-			if (m.getMarca() == marca)
-				modelos.add(m);
-		}
-		return modelos.toArray();
-	}
-
-	Color getColor() {
-		if (rdbtn_Plata.isSelected())
-			return Color.PLATA;
-		else if (rdbtn_Rojo.isSelected())
-			return Color.ROJO;
-		else if (rdbtn_Azul.isSelected())
-			return Color.AZUL;
-		else
-			return null;
-	}
-
 	/**
 	 * Create the dialog.
 	 */
@@ -155,6 +133,27 @@ public class Plantilla extends JDialog {
 	
 	private void actualizarModelo() {
 		comboBox_Modelo.setModel(new DefaultComboBoxModel(getModelo(comboBox_Marca)));
+	}
+	
+	private Object[] getModelo(JComboBox comboBox_Marca) {
+		Marca marca = (Marca) comboBox_Marca.getSelectedItem();
+		ArrayList<Modelo> modelos = new ArrayList<Modelo>();
+		for (Modelo m : Modelo.values()) {
+			if (m.getMarca() == marca)
+				modelos.add(m);
+		}
+		return modelos.toArray();
+	}
+
+	Color getColor() {
+		if (rdbtn_Plata.isSelected())
+			return Color.PLATA;
+		else if (rdbtn_Rojo.isSelected())
+			return Color.ROJO;
+		else if (rdbtn_Azul.isSelected())
+			return Color.AZUL;
+		else
+			return null;
 	}
 	
 	/**
