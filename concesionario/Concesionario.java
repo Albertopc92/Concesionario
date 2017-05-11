@@ -174,6 +174,17 @@ public class Concesionario implements Serializable{
 		return almacen.get(indice);
 	}
 	
+	/**
+	 * Comprueba si el almacen esta vacio
+	 * @return
+	 */
+	public boolean isEmpty() {
+		if(almacen.isEmpty()){
+			return true;
+		}
+		return false;
+
+	}
 	
 
 }

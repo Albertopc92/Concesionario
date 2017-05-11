@@ -32,7 +32,6 @@ public class ConcesionarioGUI {
 	private MostrarConcesionario mostrarConcesionario;
 	protected static Concesionario concesionario = new Concesionario();
 	private Filtro filtro = new Filtro(".obj", "Objeto");
-	private String nombreConcesionario;
 
 	/**
 	 * Launch the application.
@@ -137,7 +136,6 @@ public class ConcesionarioGUI {
 				salir();
 					
 			}
-
 			
 		});
 		mnNewMenu.add(mntmSalir);
@@ -159,6 +157,10 @@ public class ConcesionarioGUI {
 		JMenuItem mntmBaja = new JMenuItem("Baja");
 		mntmBaja.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(concesionario.isEmpty()){
+					JOptionPane.showMessageDialog(null, "No hay coches en el concesionario.", "Información", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 				baja = new Baja();
 				baja.setVisible(true);
 			}
@@ -182,6 +184,10 @@ public class ConcesionarioGUI {
 		JMenuItem mntmPorMatricula = new JMenuItem("Por matricula");
 		mntmPorMatricula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(concesionario.isEmpty()){
+					JOptionPane.showMessageDialog(null, "No hay coches en el concesionario.", "Información", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 				buscarMatricula = new BuscarMatricula();
 				buscarMatricula.setVisible(true);
 			}
@@ -191,6 +197,10 @@ public class ConcesionarioGUI {
 		JMenuItem mntmPorColor = new JMenuItem("Por color");
 		mntmPorColor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if(concesionario.isEmpty()){
+					JOptionPane.showMessageDialog(null, "No hay coches en el concesionario.", "Información", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
 				buscarColor = new BuscarColor();
 				buscarColor.setVisible(true);
 			}
@@ -243,8 +253,7 @@ public class ConcesionarioGUI {
 			} else {
 			}
 		} else {
-			nombreConcesionario = JOptionPane.showInputDialog(null, "Introduce el nombre del nuevo concesionario", "Nombre del Concesionario", JOptionPane.QUESTION_MESSAGE);
-			Fichero.setFichero(nombreConcesionario);
+			Fichero.setFichero("Concesionario - Sin Titulo");
 			concesionario = new Concesionario();
 			frmConcesionario.setTitle(Fichero.fichero.getName());
 			concesionario.setModificado(false);
@@ -297,7 +306,6 @@ public class ConcesionarioGUI {
 			concesionario = (Concesionario) Fichero.abrir(abrir.getSelectedFile());
 			frmConcesionario.setTitle(Fichero.getFichero().getName());
 			concesionario.setModificado(false);
-
 		}
 	}
 	
@@ -305,7 +313,7 @@ public class ConcesionarioGUI {
 	 * Metodo que permite guardar un fichero
 	 */
 	private void guardar() {
-		if (Fichero.fichero.getName().equalsIgnoreCase(nombreConcesionario)) {
+		if (Fichero.fichero.getName().equalsIgnoreCase("SinTitulo")) {
 			guardarComo();
 			concesionario.setModificado(false);
 		} else {
